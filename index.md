@@ -1,32 +1,5 @@
 ## Welcome to GitHub Pages
-<html>
-<script src='https://d3js.org/d3.v5.min.js'></script>
-<style> circle {fill: lightblue; stroke: black;} </style>
-<body onload='init()'>
-<svg width=300 height=300>
-</svg>
-<script>
-async function init() {
-const data =await d3.csv("https://flunky.github.io/cars2017.csv");
-var margin = 50;
-var svg=d3.select("svg").append('g').attr("transform","translate(" + margin + "," + margin + ")");
-var x = d3.scaleLog().domain([10,150]).range([0,200]);
-var y = d3.scaleLog().domain([10,150]).range([200,0]);
 
-
-svg.selectAll("circle").data(data).enter().append("circle")
-      .attr("cx", function (d) { return (x(d.AverageCityMPG)); } )
-      .attr("cy", function (d) { return (y(d.AverageHighwayMPG)); } )
-      .attr("r", function (d) { return d3.sum([2,d.EngineCylinders]); });
-
-d3.select("svg").append("g").attr("transform", "translate(50,50)")
-.call(d3.axisLeft(y).tickValues([10, 20, 50, 100]).tickFormat(d3.format("~s")));
-d3.select("svg").append("g").attr("transform", "translate(50,250)")
-.call(d3.axisBottom(x).tickValues([10, 20, 50, 100]).tickFormat(d3.format("~s"))); 
-}
-</script>
-</body>
-</html>
 You can use the [editor on GitHub](https://github.com/xzhang0123/testd3/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
