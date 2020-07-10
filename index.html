@@ -23,6 +23,14 @@ d3.select("svg").append("g").attr("transform", "translate(50,50)")
 d3.select("svg").append("g").attr("transform", "translate(50,250)")
 .call(d3.axisBottom(x).tickValues([10, 20, 50, 100]).tickFormat(d3.format("~s"))); 
 }
+      
+      
+svg.append("svg:image")
+.attr('x', -9)
+.attr('y', -12)
+.attr('width', 20)
+.attr('height', 24)
+.attr("xlink:href", "face.jpg")
 </script>
 </body>
 </html>
