@@ -1,0 +1,215 @@
+<html>
+<head>
+  <meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title> Page1</title>
+<link rel="stylesheet" href="reveal.css">
+<!-- <link rel="stylesheet" href="black.css"> -->
+a
+</head>
+ <a href="index.html">Next</a>
+<script src='https://d3js.org/d3.v5.min.js'></script>
+<style> circle {fill: lightblue; stroke: black;} </style>
+<body onload='init()'>
+<!-- <svg width=600 height=600> -->
+
+
+
+            <svg id="svg" width="800" height="800"  fill="blue">
+                <!-- <rect width="1851" height="1806" fill="#E5E5E5"/>
+                <circle id="Ellipse 8" cx="558" cy="341" r="39.5" fill="white" stroke="black"/>
+                <circle id="Ellipse 17" cx="1038" cy="234" r="39.5" fill="white" stroke="black"/>
+                <circle id="Ellipse 9" cx="300" cy="639" r="39.5" fill="white" stroke="black"/>
+                <circle id="Ellipse 10" cx="1498" cy="970" r="39.5" fill="white" stroke="black"/>
+                <circle id="Ellipse 11" cx="1400" cy="1401" r="39.5" fill="white" stroke="black"/>
+                <circle id="Ellipse 12" cx="399" cy="1322" r="39.5" fill="white" stroke="black"/>
+                <circle id="Ellipse 16" cx="1279" cy="1562" r="39.5" fill="white" stroke="black"/>
+                <circle id="Ellipse 15" cx="928" cy="1562" r="39.5" fill="white" stroke="black"/>
+                <circle id="Ellipse 14" cx="546" cy="1562" r="39.5" fill="white" stroke="black"/>
+                <circle id="Ellipse 13" cx="229" cy="1562" r="39.5" fill="white" stroke="black"/> -->
+                <g id="Group_TCA">
+                <circle id="Ellipse 1" cx="783" cy="932" r="224.5" stroke="black"/>
+                <circle id="Ellipse 18" cx="783" cy="703" r="39.5" fill="white" stroke="black"/>
+                <circle id="Ellipse 23" cx="600" cy="812" r="39.5" fill="white" stroke="black"/>
+                <circle id="Ellipse 22" cx="597" cy="1033" r="39.5" fill="white" stroke="black"/>
+                <circle id="Ellipse 21" cx="783" cy="1157" r="39.5" fill="white" stroke="black"/>
+                <circle id="Ellipse 20" cx="981" cy="1033" r="39.5" fill="white" stroke="black"/>
+                <circle id="Ellipse 19" cx="963" cy="816" r="39.5" fill="white" stroke="black"/>
+                <path id="Polygon 1" d="M898.314 738.715L880.994 738.638L889.721 723.677L898.314 738.715Z" fill="black"/>
+                <path id="Polygon 6" d="M567.968 932.078L550.788 929.871L561.29 916.097L567.968 932.078Z" fill="black"/>
+                <path id="Polygon 5" d="M663.973 1124.68L681.293 1124.62L672.68 1139.65L663.973 1124.68Z" fill="black"/>
+                <path id="Polygon 3" d="M891.549 1129.26L902.904 1116.18L908.553 1132.56L891.549 1129.26Z" fill="black"/>
+                <path id="Polygon 2" d="M1008 932.3L999.803 917.039L1017.11 917.574L1008 932.3Z" fill="black"/>
+                </g>
+                <!-- <g id="Group 9">
+                <line id="Line 1" x1="269" y1="1561.5" x2="506" y2="1561.5" stroke="black"/>
+                <path id="Polygon 7" d="M269.219 1562L284.404 1553.67L284.026 1570.98L269.219 1562Z" fill="black"/>
+                </g>
+                <g id="Group 8">
+                <line id="Line 2" x1="586" y1="1561.5" x2="888" y2="1561.5" stroke="black"/>
+                <path id="Polygon 8" d="M890.071 1562.14L875.009 1570.7L875.133 1553.38L890.071 1562.14Z" fill="black"/>
+                </g>
+                <g id="Group 12">
+                <line id="Line 6" x1="228.5" y1="1522" x2="228.5" y2="1322" stroke="black"/>
+                <path id="Polygon 13" d="M229.274 1312.14L237.727 1327.26L220.408 1327.02L229.274 1312.14Z" fill="black"/>
+                </g>
+                <g id="Group 10">
+                <line id="Line 5" x1="426.435" y1="1348.75" x2="524.435" y2="1521.75" stroke="black"/>
+                <path id="Polygon 10" d="M528.164 1526.36L513.514 1517.12L528.842 1509.05L528.164 1526.36Z" fill="black"/>
+                </g>
+                <g id="Group 11">
+                <line id="Line 4" x1="372.404" y1="1349.29" x2="246.404" y2="1522.29" stroke="black"/>
+                <path id="Polygon 12" d="M238.986 1525.13L243.668 1508.45L255.769 1520.84L238.986 1525.13Z" fill="black"/>
+                </g>
+                <g id="Group 13">
+                <line id="Line 7" x1="377.561" y1="1282.24" x2="314.561" y2="1167.24" stroke="black"/>
+                <path id="Polygon 11" d="M382.164 1290.36L367.514 1281.12L382.842 1273.05L382.164 1290.36Z" fill="black"/>
+                </g>
+                <g id="Group 7">
+                <line id="Line 3" x1="968" y1="1561.5" x2="1239" y2="1561.5" stroke="black"/>
+                <path id="Polygon 9" d="M1239.07 1562.14L1224.01 1570.7L1224.13 1553.38L1239.07 1562.14Z" fill="black"/>
+                </g>
+                <g id="Group 2">
+                <path id="Polygon 15" d="M567.361 793.935L550.068 794.913L557.867 779.448L567.361 793.935Z" fill="black"/>
+                <path id="Polygon 14" d="M333.367 661.711L350.447 664.583L339.42 677.94L333.367 661.711Z" fill="black"/>
+                <line id="Line 8" x1="331.487" y1="663.127" x2="564.487" y2="793.127" stroke="black" stroke-width="2" stroke-dasharray="10 10"/>
+                </g> -->
+                <!-- <g id="Group 1">
+                <path id="Polygon 16" d="M691.209 728.119L678.696 740.095L674.581 723.271L691.209 728.119Z" fill="black"/>
+                <path id="Vector 1" d="M568 380C568 578 474 686 676 730" stroke="black"/>
+                </g>
+                <g id="Group 5">
+                <path id="Polygon 17" d="M1519.03 1020.27L1503.12 1027.12L1505.15 1009.92L1519.03 1020.27Z" fill="black"/>
+                <path id="Polygon 18" d="M1419.71 1376.63L1427.08 1360.95L1436.97 1375.17L1419.71 1376.63Z" fill="black"/>
+                <path id="Vector 2" d="M1506.62 1012.07C1606.95 1178.02 1474.41 1340.84 1425 1370.04" stroke="black" stroke-width="2" stroke-dasharray="10 10"/>
+                </g>
+                <g id="Group 15">
+                <path id="Polygon 19" d="M1118.99 479.678L1123.32 496.449L1106.63 491.811L1118.99 479.678Z" fill="black"/>
+                <path id="Vector 3" d="M823 697C1063.46 697 1116 489 1116 489" stroke="black"/>
+                </g>
+                <g id="Group 17">
+                <path id="Polygon 20" d="M1058.41 268.41L1073.81 276.34L1059.24 285.711L1058.41 268.41Z" fill="black"/>
+                <line id="Line 9" x1="1060.86" y1="273.484" x2="1116.86" y2="366.484" stroke="black" stroke-width="2" stroke-dasharray="10 10"/>
+                </g>
+                <g id="Group 14">
+                <path id="Polygon 21" d="M614.597 1401.48L609.124 1417.91L597.629 1404.96L614.597 1401.48Z" fill="black"/>
+                <path id="Vector 4" d="M478 1437C545.2 1472.2 586 1423 606 1411" stroke="black"/>
+                </g> -->
+                <!-- <g id="Group 6">
+                <path id="Polygon 24" d="M1259.89 1530.5L1243.37 1525.3L1256.13 1513.59L1259.89 1530.5Z" fill="black"/>
+                <path id="Polygon 23" d="M1146.41 1412.72L1162.9 1418.01L1150.07 1429.65L1146.41 1412.72Z" fill="black"/>
+                <line id="Line 10" x1="1152.71" y1="1421.3" x2="1260.71" y2="1530.3" stroke="black" stroke-width="2" stroke-dasharray="10 10"/>
+                </g>
+                <g id="Group 16">
+                <path id="Polygon 22" d="M1039.07 1411.14L1024.01 1419.7L1024.13 1402.38L1039.07 1411.14Z" fill="black"/>
+                <path id="Vector 5" d="M930 1523C930 1523 938 1407 1030 1413" stroke="black" stroke-width="2" stroke-dasharray="10 10"/>
+                </g>
+                <g id="Group 4">
+                <path id="Polygon 26" d="M1004.51 818.604L1020.92 824.148L1007.91 835.587L1004.51 818.604Z" fill="black"/>
+                <path id="Polygon 25" d="M1463.11 959.919L1449.33 970.414L1447.13 953.233L1463.11 959.919Z" fill="black"/>
+                <path id="Vector 6" d="M1009.5 824.5C1122.5 917.5 1309.5 984.5 1459.5 961" stroke="black"/>
+                </g> -->
+                <!-- TCA cycle circles -->
+
+                </svg>
+
+
+        <script>
+            // import arc from 'd3';
+            // import  pie from 'd3';
+            var width = 30,
+	            height = 30,
+                radius = Math.min(width, height) / 2;
+var text_name =  [
+      {name: "a", size: "1"},
+      {name: "b", size: "1"},
+      {name: "c", size: "1"},
+      {name: "d", size: "1"},
+      {name: "e", size: "4"},
+      {name: "f", size: "2"},
+      {name: "g", size: "2"},
+      {name: "h", size: "4"}
+  ];
+            var data = [10,20,1,30];
+            console.log(data);
+            var pie = d3.pie();
+            // var arc = d3.arc().startAngle(Math.PI/10).endAngle(10*Math.PI/10).outerRadius(130).innerRadius(100);
+            // var arc = d3.arc().startAngle(Math.PI/10).endAngle(10*Math.PI/10);
+            // var color = d3.scaleOrdinal().range(["#2C93E8","#838690","#F56C4E"]);
+            //
+            // var pie = d3.pie().value(function(d) { return d.presses; })(data);
+            // var arc = d3.arc().outerRadius(radius - 10).innerRadius(0);
+            // var labelArc = d3.arc().outerRadius(radius - 40).innerRadius(radius - 40);
+            // var TCA=d3.select("#Group_TCA").data(text_name).append("text").text(d=> d.name)
+            // .attr("transform", "translate(" + -1000/2 + "," + -1000/2 +")");
+            var TCA=d3.select("#Group_TCA").attr("transform", "translate(" + -1000/2 + "," + -1000/2 +")");
+  //           const mouthArc = arc()
+  // .innerRadius(mouthRadius)
+  // .outerRadius(mouthRadius + mouthWidth)
+  // .startAngle(Math.PI / 2)
+  // .endAngle(Math.PI * 3 / 2);
+//   d3.select("svg").selectAll("path").data(pie(data)).enter()
+// .append("path").attr("d",arc)
+// d3.select("svg").selectAll('arc').data(data).enter().append('arc')
+// .startAngle(Math.PI/10).endAngle(10*Math.PI/10).outerRadius(130).innerRadius(100)
+// // .innerRadius(function(d, i) { return 20*d;})
+// // .outerRadius(function(d, i) {return 40*d;}).startAngle(0 * (PI/180))
+// // .endAngle(function(d, i) {
+// //   return d*6 * (PI/180)})
+// .attr("transform", "translate(" + 200 + "," + 200 +")");
+// .attr("innerRadius",function(d,i){return 10*d})
+// .attr("outerRadius",function(d,i){return 20*d})
+// .attr("startAngle",function(d,i){return d*Math.PI/10})
+// .attr("endAngle",function(d,i){return (d+30)*Math.PI/10})
+//
+
+vis = d3.select("svg");   // select the svg
+
+  // set constants
+var PI = Math.PI;
+var arcMin = 75;        // inner radius of the first arc
+var arcWidth = 15;      // width
+var arcPad = 1;         // padding between arcs
+
+  // arc accessor
+  //  d and i are automatically passed to accessor functions,
+  //  with d being the data and i the index of the data
+// var drawArc = d3.select('svg').append('arc').data(data).enter()
+//     .innerRadius(function(d, i) {
+//       return 10;
+//     })
+//     .outerRadius(function(d, i) {
+//       return 1000000;
+//     })
+//     .startAngle(0 * (Math.PI/180))
+//     .endAngle(function(d, i) {
+//       return 300 * (Math.PI/180);
+//     });
+
+    d3.selectAll("circle").data(data).enter().append("circle")
+          .attr("cx", function (d) { return d; } )
+          .attr("cy", function (d) { return d; } )
+          .attr("r", function (d) { return 3000; });
+  // bind the data
+
+            // d3.select("svg").append('g').selectAll('arc').data(d3.pie(data)).enter().append('path').attr("d",arc).innerRadius(100).outerRadius(120)
+            // .startAngle(Math.PI/10).endAngle(2*Math.PI/10);
+            // var svg = d3.select("#Ellipse 8")
+            //         .insert("svg", "Ellipse 8")
+            //         .attr("width", width)
+            //         .attr("height", height)
+            //             .append("g")
+            //             .attr("transform", "translate(" + width/2 + "," + height/2 +")"); // Moving the center point. 1/2 the width and 1/2 the height
+            //
+            // var g = svg.selectAll("arc")
+            //             .data(pie)
+            //             .enter().append("g")
+            //             .attr("class", "arc");
+
+                // g.append("path")
+                // .attr("d", arc)
+                // .style("fill", function(d) { return color(d.data.letter);});
+
+        </script>
+    </body>
+</html

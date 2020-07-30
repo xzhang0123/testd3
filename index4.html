@@ -1,0 +1,196 @@
+<html>
+<head>
+  <meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title> TCA cycle reaction profile</title>
+<link rel="stylesheet" href="reveal.css">
+<!-- <link rel="stylesheet" href="black.css"> -->
+TCA cycle reactions in mitochondria
+</head>
+ <a href="index.html">Next</a>
+<script src='https://d3js.org/d3.v5.min.js'></script>
+<div id="divtt"></div>
+<style> circle {fill: lightblue; stroke: white;} </style>
+<button onclick="update(data1)">PYR+MAL</button>
+<button onclick="update(data2)">GLU+MAL</button>
+<svg width=800 height=800>
+  <!-- <path id="tri1" d="M200 200 Q200 250  550 350" fill="lightblue"/> -->
+  <!-- <path id="tri2" d="M567.968 932.078L550.788 929.871L561.29 916.097L567.968 932.078Z" fill="black"/> -->
+
+</svg>
+  <script>
+  var svg = d3.select("#divtt")
+  .append("svg")
+    .attr("width", 800)
+    .attr("height", 800)
+  .append("g")
+  const GOT = d3.select("svg").append('path')
+    .attr('d',d3.arc()({
+      innerRadius: 250,
+      outerRadius: 270,
+      startAngle: 0.85*Math.PI,
+      endAngle: 11/8*Math.PI  })) .attr('stroke', 'lightblue')
+        .attr('fill', 'lightblue')
+        .attr("transform", "translate(450,100)");
+  const PYRDH = d3.select("svg").append('path')
+    .attr('d',d3.arc()({
+      innerRadius: 80,
+      outerRadius: 100,
+      startAngle: 1.5*Math.PI,
+      endAngle: 1*Math.PI  })) .attr('stroke', 'lightblue')
+        .attr('fill', 'lightblue')
+        .attr("transform", "translate(350,60)");
+  var data1 = [10,20,20,40,10,30,20,30,10,30,20];
+  var data2 = [100,200,200,40,100,300,200,300,100,300,20];
+  // var data = [
+  //   {value:10,start:1/4*Math.PI,end:2/4*Math.PI,label:'SDF'},
+  //   {value:10,start:2/4*Math.PI,end:3/4*Math.PI,label:'SDF'},
+  //   {value:10,start:3/4*Math.PI,end:4/4*Math.PI,label:'SDF'},
+  //   {value:10,start:4/4*Math.PI,end:5/4*Math.PI,label:'SDF'},
+  //   {value:10,start:5/4*Math.PI,end:6/4*Math.PI,label:'SDF'},
+  //   {value:10,start:6/4*Math.PI,end:7/4*Math.PI,label:'SDF'},
+  //   {value:10,start:7/4*Math.PI,end:8/4*Math.PI,label:'SDF'},
+  //   {value:10,start:8/4*Math.PI,end:9/4*Math.PI,label:'SDF'},
+  //   {value:10,start:1/4*Math.PI,end:2/4*Math.PI,label:'SDF'},
+  //   {value:10,start:1/4*Math.PI,end:2/4*Math.PI,label:'SDF'},
+    // ];
+    var data_PDH=[0]
+PYRDH.data(data_PDH).enter().append("path")
+    .attr("d", d3.arc()
+    .innerRadius( function(d, i) { return 300-d/2;} )
+    .outerRadius( function(d, i) { return 400+d/2;} ))
+
+
+    // // .attr("transform", "translate(350,350)")
+    // .on("mouseover", mouseover)
+    // .on("mousemove", mousemove)
+    // .on("mouseleave", mouseleave);
+
+
+  var center =350;
+  var cir_pos=  [
+        // {x: 0, y: -250,label:"OXA"},
+        // {x: -250/2*1.414, y: -250/2*1.414,label:"Oxaloacetate"},
+        // {x: 250/2*1.414, y: -250/2*1.414,label:"citrate"},
+        // {x: -250, y: 0,label:"malate"},
+        // {x: 250, y: 0,label:"a-ketoglutarate"},
+        // {x: -250/2*1.414, y: 250/2*1.414,label:"fumarate"},
+        // {x: 250/2*1.414, y: 250/2*1.414,label:"Succinyl-CoA"},
+        // {x: 0, y: 250,label:"Succinate"},
+        {x: -200/2*1.414, y: -200/2*1.414,label:"OXA"},
+        {x: 200/2*1.414, y: -200/2*1.414,label:"CIT"},
+        {x: -200, y: 0,label:"MAL"},
+        {x: 200, y: 0,label:"aKG"},
+        {x: -200/2*1.414, y: 200/2*1.414,label:"FUM"},
+        {x: 200/2*1.414, y: 200/2*1.414,label:"SCoA"},
+        {x: 0, y: 200,label:"SUC"},
+        // {x: 500, y: 200},
+        // {x: 200, y: 200},
+        // {x: 300, y: 200},
+        // {x: 350, y: 200},
+    ];
+  //   var tooltip = d3.select("#TCA_path")
+  // .append("div")
+  //   .style("opacity", 0.5)
+  //   .attr("class", "tooltip")
+  //   .style("background-color", "black")
+  //   .style("border-radius", "15px")
+  //   .style("padding", "20px")
+  //   .style("color", "blue")
+  var tooltip =d3.select('#divtt').append("div")
+      .style("position", "absolute")
+      // .style("visibility", "hidden")
+      .style("background-color", "white")
+      .style("border", "solid")
+      .style("border-width", "1px")
+      .style("border-radius", "10px")
+      .style("padding", "2px")
+
+  var mouseover = function(d) {
+    d3.select(this)
+      .style("stroke", "black")
+      .style("opacity", 1)
+    tooltip
+    .style("opacity", 1)
+
+    .style("left", (d3.mouse(this)[0]+360) + "px")
+    .style("top", (d3.mouse(this)[1]) +360 + "px")
+    .html("Reaction is: " + d.value)
+  }
+  var mousemove = function(d) {
+    tooltip
+      .style("opacity", 1)
+      // .html("The exact value of<br>this cell is: " + d.value)
+      .style("left", (d3.mouse(this)[0]+360) + "px")
+      .style("top", (d3.mouse(this)[1]) +360 + "px")
+      .html("Reaction: " + d.value)
+      d3.select(this)
+        .style("stroke", "black")
+        .style("opacity", 1)
+  }
+  var mouseleave = function(d) {
+    tooltip
+    .transition()
+    .duration(1000)
+      .style("opacity", 0)
+    d3.select(this)
+      .style("stroke", "none")
+      .style("opacity", 1)
+  }
+  // var txt_TCA =["PYR","PYR","PYR","PYR","PYR","PYR","PYR","PYR"];
+  // var txt_TCA =[{x:"PYR"}];
+  function update(data) {
+  TCA_path=d3.select('svg').selectAll("path").data(data)
+  TCA_path.enter().append("path").merge(TCA_path) // get the already existing elements as well
+    .transition() // and apply changes to all of them
+    .duration(500)
+  .attr("d", d3.arc()
+  .innerRadius( function(d, i) { return 200-d/2;} )
+  .outerRadius( function(d, i) { return 200+d/2;} )
+  .startAngle( function(d, i) { return 2*i*Math.PI/8;}  )     //
+  .endAngle( function(d, i) { return 2*(i+1)*Math.PI/8;}))
+  .attr('stroke', 'lightblue')
+  .attr('fill', 'lightblue')
+  .attr("transform", "translate(350,350)");
+  // .on("mouseover", mouseover)
+  // .on("mousemove", mousemove)
+  // .on("mouseleave", mouseleave);
+  TCA_path
+    .exit()
+    .remove()
+  var text8 = d3.select("svg").selectAll('text').data(cir_pos).enter().append('text');
+    // d3.select('#TCA_circle').data(txt_TCA).enter().append('text')
+    // .text(function(d){return d.x});
+  var textlabels= text8
+    .attr("x", function(d) { return d.x; })
+    .attr("y", function(d) { return d.y; })
+    .text(function(d){return d.label;})
+    .attr("font-family", "sans-serif")
+    .attr("font-size", "20px")
+    .attr("text-anchor", "middle")
+    .attr("font-weight", "bold")
+    .attr("fill", "black").attr("transform", "translate(350,355)");
+}
+    // .html("The reaction rate <br> of  is: " + d.label)
+  var TCA_circle =d3.select('svg').selectAll("circle").data(cir_pos).enter().append("circle")
+  .attr("cx", function(d, i) { return d.x;} )
+  .attr("cy", function(d, i) { return d.y;} )
+  .attr("r",40)
+  .attr('stroke', 'white')
+  .on("mouseover", mouseover)
+  .on("mousemove", mousemove)
+  .on("mouseleave", mouseleave)
+  // .attr('fill', '#69b3a2')
+  .attr("transform", "translate(350,350)");
+
+
+  // .startAngle(Math.PI/10).endAngle(10*Math.PI/10)
+  // .innerRadius(function(d, i) { return 100;})
+  // .outerRadius(function(d, i) {return 120;});
+// bind the data
+update(data1)
+
+
+    </script>
+  </body>
+</html>
