@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="reveal.css">
 <!-- <link rel="stylesheet" href="black.css"> -->
 <h1>Mitochondria Respiration </h1>
-<h2>Oxygen Consumption VS Energy Demand</h2>
+<h2>Membrane Potential VS Energy Demand</h2>
 </head>
   <p>
       <a href="index.html">Prev</a>
@@ -26,13 +26,13 @@ var margin =20;
 var svg=d3.select("svg").append('g')
 // .attr("transform","translate(" + margin + "," + margin + ")");
 var x = d3.scaleLinear().domain([0,250]).range([0,350]);
-var y = d3.scaleLinear().domain([0,600]).range([350,0]);
+var y = d3.scaleLinear().domain([100,200]).range([350,0]);
 var color = d3.scaleOrdinal().domain(['PM','GM','SUC'])
 .range([ "#F8766D", "#00BA38", "#619CFF"]);
 
 var cir=svg.append('g').selectAll("circle").data(data).enter().append("circle").attr("transform", "translate(100,150)")
       .attr("cx", function (d) { return (x(d.ADP)); } )
-      .attr("cy", function (d) { return (y(d.OCR)); } )
+      .attr("cy", function (d) { return (y(d.dpsi)); } )
       .style("fill", function (d) { return color(d.SUB); } )
       // .attr("r", function (d) { return d3.sum([2,5]); });
       .attr("r", function (d) {
@@ -58,7 +58,7 @@ d3.select("svg").append("text")
     .attr("transform", "rotate(-90)")
     .attr("y", 50)
     .attr("x", -200)
-    .text("Oxygen Consumption Rate")
+    .text("Membrane Potential (mV)")
 
     var size = 20
         var allgroups = ["PYR+MAL", "GLU+MAL", "SUC"]
@@ -147,7 +147,7 @@ d3.select("svg").append("text")
                 // Update chart
                 svg.selectAll("circle").data(data).transition().duration(1000)
                       .attr("cx", function (d) { return (x(d.ADP)); } )
-                      .attr("cy", function (d) { return (y(d.OCR)); } )
+                      .attr("cy", function (d) { return (y(d.dpsi)); } )
 ;
               }
 
