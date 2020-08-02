@@ -3,17 +3,34 @@
   <meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title> TCA cycle reaction profile</title>
-<link rel="stylesheet" href="reveal.css">
+<link  rel="stylesheet" href="reveal.css">
 <!-- <link rel="stylesheet" href="black.css"> -->
-TCA cycle reactions in mitochondria
+<h1>Mitochondria Respiration </h1>
+<h2>TCA cycle's pattern under different substrates</h2>
+
 </head>
- <a href="index.html">Next</a>
+<p>
+    <a href="index2.html">Prev</a>
+
+</p>
 <script src='https://d3js.org/d3.v5.min.js'></script>
+<button  class="button PM" onclick="update(data1)">PYR+MAL</button>
+<button  class="button GM" onclick="update(data2)">GLU+MAL</button>
+<button  class="button SUC" onclick="update(data3)">SUC</button>
+<!-- <button  onclick="update(data1)">PYR+MAL</button>
+<button  onclick="update(data2)">GLU+MAL</button>
+<button  onclick="update(data3)">SUC</button> -->
 <div id="divtt"></div>
 <style> circle {fill: lightblue; stroke: white;} </style>
-<button onclick="update(data1)">PYR+MAL</button>
-<button onclick="update(data2)">GLU+MAL</button>
-<svg width=800 height=800>
+
+<!-- <g id="Group_TCA">
+<path id="Polygon 1" d="M898.314 738.715L880.994 738.638L889.721 723.677L898.314 738.715Z" fill="black"/>
+<path id="Polygon 6" d="M567.968 932.078L550.788 929.871L561.29 916.097L567.968 932.078Z" fill="black"/>
+<path id="Polygon 5" d="M663.973 1124.68L681.293 1124.62L672.68 1139.65L663.973 1124.68Z" fill="black"/>
+<path id="Polygon 3" d="M891.549 1129.26L902.904 1116.18L908.553 1132.56L891.549 1129.26Z" fill="black"/>
+<path id="Polygon 2" d="M1008 932.3L999.803 917.039L1017.11 917.574L1008 932.3Z" fill="black"/>
+</g> -->
+<!-- <svg width=800 height=700> -->
   <!-- <path id="tri1" d="M200 200 Q200 250  550 350" fill="lightblue"/> -->
   <!-- <path id="tri2" d="M567.968 932.078L550.788 929.871L561.29 916.097L567.968 932.078Z" fill="black"/> -->
 
@@ -22,26 +39,27 @@ TCA cycle reactions in mitochondria
   var svg = d3.select("#divtt")
   .append("svg")
     .attr("width", 800)
-    .attr("height", 800)
+    .attr("height", 700)
   .append("g")
-  const GOT = d3.select("svg").append('path')
-    .attr('d',d3.arc()({
-      innerRadius: 250,
-      outerRadius: 270,
-      startAngle: 0.85*Math.PI,
-      endAngle: 11/8*Math.PI  })) .attr('stroke', 'lightblue')
-        .attr('fill', 'lightblue')
-        .attr("transform", "translate(450,100)");
-  const PYRDH = d3.select("svg").append('path')
-    .attr('d',d3.arc()({
-      innerRadius: 80,
-      outerRadius: 100,
-      startAngle: 1.5*Math.PI,
-      endAngle: 1*Math.PI  })) .attr('stroke', 'lightblue')
-        .attr('fill', 'lightblue')
-        .attr("transform", "translate(350,60)");
+  // const GOT = d3.select("svg").append('path')
+  //   .attr('d',d3.arc()({
+  //     innerRadius: 250,
+  //     outerRadius: 270,
+  //     startAngle: 0.85*Math.PI,
+  //     endAngle: 11/8*Math.PI  })) .attr('stroke', 'lightblue')
+  //       .attr('fill', 'lightblue')
+  //       .attr("transform", "translate(450,100)");
+  // const PYRDH = d3.select("svg").append('path')
+  //   .attr('d',d3.arc()({
+  //     innerRadius: 80,
+  //     outerRadius: 100,
+  //     startAngle: 1.5*Math.PI,
+  //     endAngle: 1*Math.PI  })) .attr('stroke', 'lightblue')
+  //       .attr('fill', 'lightblue')
+  //       .attr("transform", "translate(350,60)");
   var data1 = [10,20,20,40,10,30,20,30,10,30,20];
   var data2 = [100,200,200,40,100,300,200,300,100,300,20];
+    var data3 = [100,20,20,40,10,30,20,30,10,30,20];
   // var data = [
   //   {value:10,start:1/4*Math.PI,end:2/4*Math.PI,label:'SDF'},
   //   {value:10,start:2/4*Math.PI,end:3/4*Math.PI,label:'SDF'},
@@ -55,10 +73,10 @@ TCA cycle reactions in mitochondria
   //   {value:10,start:1/4*Math.PI,end:2/4*Math.PI,label:'SDF'},
     // ];
     var data_PDH=[0]
-PYRDH.data(data_PDH).enter().append("path")
-    .attr("d", d3.arc()
-    .innerRadius( function(d, i) { return 300-d/2;} )
-    .outerRadius( function(d, i) { return 400+d/2;} ))
+// PYRDH.data(data_PDH).enter().append("path")
+//     .attr("d", d3.arc()
+//     .innerRadius( function(d, i) { return 300-d/2;} )
+//     .outerRadius( function(d, i) { return 400+d/2;} ))
 
 
     // // .attr("transform", "translate(350,350)")
@@ -69,14 +87,6 @@ PYRDH.data(data_PDH).enter().append("path")
 
   var center =350;
   var cir_pos=  [
-        // {x: 0, y: -250,label:"OXA"},
-        // {x: -250/2*1.414, y: -250/2*1.414,label:"Oxaloacetate"},
-        // {x: 250/2*1.414, y: -250/2*1.414,label:"citrate"},
-        // {x: -250, y: 0,label:"malate"},
-        // {x: 250, y: 0,label:"a-ketoglutarate"},
-        // {x: -250/2*1.414, y: 250/2*1.414,label:"fumarate"},
-        // {x: 250/2*1.414, y: 250/2*1.414,label:"Succinyl-CoA"},
-        // {x: 0, y: 250,label:"Succinate"},
         {x: -200/2*1.414, y: -200/2*1.414,label:"OXA"},
         {x: 200/2*1.414, y: -200/2*1.414,label:"CIT"},
         {x: -200, y: 0,label:"MAL"},
@@ -84,11 +94,17 @@ PYRDH.data(data_PDH).enter().append("path")
         {x: -200/2*1.414, y: 200/2*1.414,label:"FUM"},
         {x: 200/2*1.414, y: 200/2*1.414,label:"SCoA"},
         {x: 0, y: 200,label:"SUC"},
-        // {x: 500, y: 200},
-        // {x: 200, y: 200},
-        // {x: 300, y: 200},
-        // {x: 350, y: 200},
+
     ];
+    var cir_pos2=  [
+          // {x: -200/2*1.414, y: -200/2*1.414,label:"OXA"},
+          {x: 220/2*1.414, y: -220/2*1.414,label:"NADH"},
+          {x: -180, y: -20,label:"NADH"},
+          {x: 220, y: 20,label:"NADH"},
+          // {x: 200/2*1.414, y: 200/2*1.414,label:"SCoA"},
+          // {x: 0, y: 200,label:"SUC"},
+
+      ];
   //   var tooltip = d3.select("#TCA_path")
   // .append("div")
   //   .style("opacity", 0.5)
@@ -141,9 +157,10 @@ PYRDH.data(data_PDH).enter().append("path")
   // var txt_TCA =[{x:"PYR"}];
   function update(data) {
   TCA_path=d3.select('svg').selectAll("path").data(data)
-  TCA_path.enter().append("path").merge(TCA_path) // get the already existing elements as well
+  TCA_path.enter().append("path")
+  .merge(TCA_path) // get the already existing elements as well
     .transition() // and apply changes to all of them
-    .duration(500)
+    .duration(400)
   .attr("d", d3.arc()
   .innerRadius( function(d, i) { return 200-d/2;} )
   .outerRadius( function(d, i) { return 200+d/2;} )
@@ -183,6 +200,14 @@ PYRDH.data(data_PDH).enter().append("path")
   // .attr('fill', '#69b3a2')
   .attr("transform", "translate(350,350)");
 
+
+  var NADH_circle =d3.select('svg').selectAll("circle").data(cir_pos2).enter().append("circle")
+  .attr("cx", function(d, i) { return d.x;} )
+  .attr("cy", function(d, i) { return d.y;} )
+  .attr("r",40)
+  .attr('stroke', 'white')
+  .attr('fill', 'yellow')
+  .attr("transform", "translate(350,350)");
 
   // .startAngle(Math.PI/10).endAngle(10*Math.PI/10)
   // .innerRadius(function(d, i) { return 100;})
