@@ -1,0 +1,47 @@
+<html>
+<head>
+  <meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title> Page1</title>
+<link rel="stylesheet" href="reveal.css">
+<!-- <link rel="stylesheet" href="black.css"> -->
+a
+</head>
+ <a href="index2.html">Next</a>
+<script src='https://d3js.org/d3.v5.min.js'></script>
+<style> circle {fill: lightblue; stroke: black;} </style>
+<body onload='init()'>
+<svg width=300 height=300>
+</svg>
+
+<script>
+async function init() {
+const data =await d3.csv("https://raw.githubusercontent.com/xzhang0123/testd3/master/heart.csv");
+var margin = 50;
+var svg=d3.select("svg").append('g').attr("transform","translate(" + margin + "," + margin + ")");
+var x = d3.scaleLinear().domain([30,80]).range([0,200]);
+var y = d3.scaleLinear().domain([100,190]).range([200,0]);
+
+
+svg.selectAll("circle").data(data).enter().append("circle")
+      .attr("cx", function (d) { return (x(d.age)); } )
+      .attr("cy", function (d) { return (y(d.trestbps)); } )
+      .attr("r", function (d) { return d3.sum([2,5]); });
+
+d3.select("svg").append("g").attr("transform", "translate(50,50)")
+.call(d3.axisLeft(y).tickFormat(d3.format("~s")));
+d3.select("svg").append("g").attr("transform", "translate(50,250)")
+.call(d3.axisBottom(x).tickFormat(d3.format("~s")));
+}
+
+
+d3.append("svg:image")
+.attr('x', 9)
+.attr('y', 12)
+.attr('width', 20)
+.attr('height', 24)
+.attr("xlink:href", "face.jpg")
+
+</script>
+</body>
+</html>

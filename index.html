@@ -5,42 +5,165 @@
 <title> Page1</title>
 <link rel="stylesheet" href="reveal.css">
 <!-- <link rel="stylesheet" href="black.css"> -->
-a
+<h1>Mitochondria Respiration </h1>
+<h2>Oxygen Consumption VS Energy Demand</h2>
 </head>
- <a href="index2.html">Next</a>
+  <p>
+      <!-- <a href="index.html">Prev</a> -->
+     <a href="index2.html">Next</a>
+  </p>
 <script src='https://d3js.org/d3.v5.min.js'></script>
-<style> circle {fill: lightblue; stroke: black;} </style>
+<input type="number" id="buttonXlim" value=250 class="xinput">
+<!-- <style> circle {fill: lightblue; stroke: black;} </style> -->
 <body onload='init()'>
-<svg width=300 height=300>
+<svg width=800 height=600>
 </svg>
 
 <script>
 async function init() {
-const data =await d3.csv("https://raw.githubusercontent.com/xzhang0123/testd3/master/heart.csv");
-var margin = 50;
-var svg=d3.select("svg").append('g').attr("transform","translate(" + margin + "," + margin + ")");
-var x = d3.scaleLinear().domain([30,80]).range([0,200]);
-var y = d3.scaleLinear().domain([100,190]).range([200,0]);
+const data =await d3.csv("https://raw.githubusercontent.com/xzhang0123/testd3/master/OCRdata.csv");
+var margin =20;
+var svg=d3.select("svg").append('g')
+// .attr("transform","translate(" + margin + "," + margin + ")");
+var x = d3.scaleLinear().domain([0,250]).range([0,350]);
+var y = d3.scaleLinear().domain([0,600]).range([350,0]);
+var color = d3.scaleOrdinal().domain(['PM','GM','SUC'])
+.range([ "#F8766D", "#00BA38", "#619CFF"]);
 
+var cir=svg.append('g').selectAll("circle").data(data).enter().append("circle").attr("transform", "translate(100,150)")
+      .attr("cx", function (d) { return (x(d.ADP)); } )
+      .attr("cy", function (d) { return (y(d.OCR)); } )
+      .style("fill", function (d) { return color(d.SUB); } )
+      // .attr("r", function (d) { return d3.sum([2,5]); });
+      .attr("r", function (d) {
+        if (d.SUB=="SUC") {return 1.5/50*d.OCR+2; }
+        else{
+        return 2.5/50*d.OCR+2;
+      }});
 
-svg.selectAll("circle").data(data).enter().append("circle")
-      .attr("cx", function (d) { return (x(d.age)); } )
-      .attr("cy", function (d) { return (y(d.trestbps)); } )
-      .attr("r", function (d) { return d3.sum([2,5]); });
-
-d3.select("svg").append("g").attr("transform", "translate(50,50)")
+ var yAxis = d3.select("svg").append("g").attr("transform", "translate(100,150)")
 .call(d3.axisLeft(y).tickFormat(d3.format("~s")));
-d3.select("svg").append("g").attr("transform", "translate(50,250)")
+ var xAxis = d3.select("svg").append("g").attr("transform", "translate(100,500)")
 .call(d3.axisBottom(x).tickFormat(d3.format("~s")));
-}
 
 
-d3.append("svg:image")
-.attr('x', 9)
-.attr('y', 12)
-.attr('width', 20)
-.attr('height', 24)
-.attr("xlink:href", "face.jpg")
+d3.select("svg").append("text")
+    .attr("text-anchor", "end")
+    .attr("x", 400 )
+    .attr("y", 550 )
+    .text("Energy Demand (ADP concentration)");
+
+d3.select("svg").append("text")
+    .attr("text-anchor", "end")
+    .attr("transform", "rotate(-90)")
+    .attr("y", 50)
+    .attr("x", -200)
+    .text("Oxygen Consumption Rate")
+
+    var size = 20
+        var allgroups = ["PYR+MAL", "GLU+MAL", "SUC"]
+      d3.select("svg").selectAll("myrect")
+          .data(allgroups)
+          .enter()
+          .append("circle")
+            .attr("cx", 540)
+            .attr("cy", function(d,i){ return 200 + i*(size+5)}) // 100 is where the first dot appears. 25 is the distance between dots
+            .attr("r", 7)
+            .style("fill", function(d){ return color(d)})
+
+
+      svg.selectAll("mylabels")
+        .data(allgroups)
+        .enter()
+        .append("text")
+          .attr("x", 540 + size*.8)
+          .attr("y", function(d,i){ return 200+i * (size + 5)}) // 100 is where the first dot appears. 25 is the distance between dots
+          .style("fill", function(d){ return color(d)})
+          .text(function(d){ return d})
+          .attr("text-anchor", "left")
+          .style("alignment-baseline", "middle")
+          // .on("mouseover", highlight)
+          // .on("mouseleave", noHighlight)
+          // Add legend: circles
+           var valuesToShow = [20, 90, 150]
+           var xCircle = 560
+           var xLabel = 620
+           var z = d3.scaleLinear()
+    .domain([20, 150])
+    .range([ 3, 20]);
+           svg
+             .selectAll("legend")
+             .data(valuesToShow)
+             .enter()
+             .append("circle")
+               .attr("cx", xCircle)
+               .attr("cy", function(d){ return 400 } )
+               .attr("r", function(d){ return z(d) })
+               .style("fill", "none")
+               .attr("stroke", "black")
+
+           // Add legend: segments
+           svg
+             .selectAll("legend")
+             .data(valuesToShow)
+             .enter()
+             .append("line")
+               .attr('x1', function(d){ return xCircle  } )
+               .attr('x2', xLabel)
+               .attr('y1', function(d){ return 400 - z(d) } )
+               .attr('y2', function(d){ return 400 - z(d) } )
+               .attr('stroke', 'black')
+               .style('stroke-dasharray', ('2,2'))
+
+           // Add legend: labels
+           svg
+             .selectAll("legend")
+             .data(valuesToShow)
+             .enter()
+             .append("text")
+               .attr('x', xLabel)
+               .attr('y', function(d){ return 400- z(d) } )
+               .text( function(d){ return d } )
+               .style("font-size", 10)
+               .attr('alignment-baseline', 'middle')
+
+           // Legend title
+           svg.append("text")
+             .attr('x', xCircle+20)
+             .attr("y", 440)
+             .text("ATP Production (nmol/min)")
+             .attr("text-anchor", "middle")
+             .style("font-size", 12)
+
+             function updatePlot() {
+
+                // Get the value of the button
+                xlim = this.value
+ console.log(data)
+                // Update X axis
+                x.domain([0,xlim])
+                xAxis.transition().duration(1000).call(d3.axisBottom(x))
+
+                // Update chart
+                svg.selectAll("circle").data(data).transition().duration(1000)
+                      .attr("cx", function (d) { return (x(d.ADP)); } )
+                      .attr("cy", function (d) { return (y(d.OCR)); } )
+;
+              }
+
+              // Add an event listener to the button created in the html part
+              d3.select("#buttonXlim").on("input", updatePlot )
+  }
+
+
+
+ // })
+// d3.select("svg").append("svg:image").attr("transform", "translate(250,250)")
+// .attr('x', 9)
+// .attr('y', 9)
+// .attr('width', 500)
+// .attr('height', 500)
+// .attr("xlink:href", "face.jpg")
 
 </script>
 </body>
