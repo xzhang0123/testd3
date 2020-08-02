@@ -182,8 +182,7 @@
   // var txt_TCA =[{x:"PYR"}];
   function update(data) {
   TCA_path=d3.select('svg').append('g').selectAll("path").data(data)
-  TCA_path.enter().append("path")
-  .merge(TCA_path) // get the already existing elements as well
+  TCA_path.enter().append("path").merge(TCA_path) // get the already existing elements as well
     .transition() // and apply changes to all of them
     .duration(400)
   .attr("d", d3.arc()

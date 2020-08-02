@@ -114,7 +114,14 @@ d3.select("svg").append("text")
                .attr('y2', function(d){ return 400 - z(d) } )
                .attr('stroke', 'black')
                .style('stroke-dasharray', ('2,2'))
-
+          // var saturation=  svg.selectAll("saturation").append('g').data(valuesToShow)
+          //   .enter().append("line")
+          //          .attr('x1', function(d){ return x(50)+100  } )
+          //          .attr('x2', function(d){ return x(50)+100  })
+          //          .attr('y1', function(d){ return y(100)+150 } )
+          //          .attr('y2', function(d){ return y(200)+150 } )
+          //          .attr('stroke', 'black')
+          //          .style('stroke-dasharray', ('2,2'))
            // Add legend: labels
            svg
              .selectAll("legend")
@@ -147,10 +154,15 @@ d3.select("svg").append("text")
                 // Update chart
                 svg.selectAll("circle").data(data).transition().duration(1000)
                       .attr("cx", function (d) { return (x(d.ADP)); } )
-                      .attr("cy", function (d) { return (y(d.dpsi)); } )
-;
-              }
+                      .attr("cy", function (d) { return (y(d.dpsi)); } );
+                // saturation.select("line").data(valuesToShow).transition().duration(1000)
+                //                .attr('x1', function(d){ return x(50)+100  } )
+                //                .attr('x2', function(d){ return x(50)+100  })
+                //                .attr('y1', function(d){ return y(100)+150 } )
+                //                .attr('y2', function(d){ return y(200)+150 } )
 
+              }
+// saturation.exit().remove()
               // Add an event listener to the button created in the html part
               d3.select("#buttonXlim").on("input", updatePlot )
   }

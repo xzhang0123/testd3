@@ -38,7 +38,7 @@ h2 {
 font-weight:bold
 
 } */
-.xinput{  position: relative;
+.xinput{  position: absolute;
 left: 520px;
 top: 520px;
 background-color: orange;
