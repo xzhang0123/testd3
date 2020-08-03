@@ -8,9 +8,14 @@
 <h1>Mitochondria Respiration </h1>
 <h2>Oxygen Consumption VS Energy Demand</h2>
 </head>
+<ul>
+  <li>Mitochondria oxygen consumption rates increases as energy demand (ADP concentration) increases</li>
+  <li>Maximum oxygen consumption rate is reached after ADP is higher than 50 units</li>
+  <li>Different substrates (PYR+MAL, GLU+MAL, SUC) result in different fuel efficiencies</li>
+</ul>
   <p>
       <!-- <a href="index.html">Prev</a> -->
-     <a href="index2.html">Next</a>
+     <a href="index2.html">Next--></a>
   </p>
 <script src='https://d3js.org/d3.v5.min.js'></script>
 <input type="number" id="buttonXlim" value=250 class="xinput">
@@ -58,7 +63,7 @@ d3.select("svg").append("text")
     .attr("transform", "rotate(-90)")
     .attr("y", 50)
     .attr("x", -200)
-    .text("Oxygen Consumption Rate")
+    .text("Oxygen Consumption Rate (nmol/min)")
 
     var size = 20
         var allgroups = ["PYR+MAL", "GLU+MAL", "SUC"]
