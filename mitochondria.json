@@ -10,6 +10,7 @@
     {"id": "AKG", "group": 8},
     {"id": "Malate", "group": 1},    
     {"id": "GLU", "group": 1},
+    {"id": "Glutamin", "group": 1},
     {"id": "Aspartate", "group": 1},
     {"id": "LAC", "group": 1}
   ],
@@ -25,5 +26,6 @@
     {"source": "Malate", "target": "OXA", "value": 1},    
     {"source": "GLU", "target": "AKG", "value": 1},
     {"source": "LAC", "target": "Pyruvate", "value": 1},
+    {"source": "Glutamin", "target": "GLU", "value": 1}
   ]
 }
