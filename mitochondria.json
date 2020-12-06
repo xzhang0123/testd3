@@ -1,0 +1,27 @@
+{
+  "nodes": [
+    {"id": "Pyruvate", "group": 1},
+    {"id": "ACoA", "group": 1},
+    {"id": "Citrate", "group": 8},
+    {"id": "OXA", "group": 8},    
+    {"id": "SCoA", "group": 8},
+    {"id": "SUC", "group": 8},
+    {"id": "FUM", "group": 8},
+    {"id": "AKG", "group": 8},
+    {"id": "Malate", "group": 1},    
+    {"id": "GLU", "group": 1},
+    {"id": "Aspartate", "group": 1}
+  ],
+  "links": [
+    {"source": "Pyruvate", "target": "ACoA", "value": 1},
+    {"source": "OXA", "target": "Citrate", "value": 1},
+    {"source": "ACoA", "target": "Citrate", "value": 1},
+    {"source": "Citrate", "target": "AKG", "value": 10},
+    {"source": "AKG", "target": "SCoA", "value": 100},
+    {"source": "SCoA", "target": "SUC", "value": 1},    
+    {"source": "SUC", "target": "FUM", "value": 1},  
+    {"source": "FUM", "target": "Malate", "value": 1},  
+    {"source": "Malate", "target": "OXA", "value": 1},    
+    {"source": "GLU", "target": "AKG", "value": 1}
+  ]
+}
